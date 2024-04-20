@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altay's Gardrop</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    .column {
+        padding: 10px;
+        border: 1px solid #ccc;
+        display: none; 
+    }
+
+    .draggable {
+        width: 130px;
+        height: 130px;
+        cursor: pointer;
+    }
+
+    #dropzone {
+        border: 2px dashed #ccc;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    #dropzone img {
+        width: 130px;
+        height: 130px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+
+    .dropped-image {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .delete-button {
+        font-size: 9px; 
+        padding: 1px 1px;  
+        margin-left: 1px;  
+        cursor: pointer;
+    }
+    
+</style>
+</head>
+<body>
+
+<script>
+
+//aynı anda sütun açılmaması için gerekli kod
+
+    var openColumn = ""; 
+
+    function closeAllColumns() {
+        var columns = document.querySelectorAll('.column');
+        columns.forEach(function(column) {
+            column.style.display = "none";
+        });
+        openColumn = "";
+    }
+
+    function toggleColumn(columnId) {
+        if (openColumn === columnId) {
+            document.getElementById(columnId).style.display = "none";
+            openColumn = "";
+        } else {
+            closeAllColumns();
+            document.getElementById(columnId).style.display = "block";
+            openColumn = columnId;
+        }
+    }
+</script>
+
+<div class="container mt-4">
+    <h3>Altay's Gardrop v0.1</h3>
+    <h5>Kıyafet seçmek için butona ve kıyafete tıkla. Aşağıdaki boş alana gelecektir. Gelmiyorsa sıçtık.</h5>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary" onclick="toggleColumn('column1')">Tişörtler Aç/Kapat</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" onclick="toggleColumn('column2')">Pantalon Aç/Kapat</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" onclick="toggleColumn('column3')">Ayakkabı Aç/Kapat</button>
+        </div>
+    </div>
+</div>
+
+<div id="container" class="container mt-4">
+    <div class="row">
+        <div class="column" id="column1" ondrop="drop(event, 1)" ondragover="allowDrop(event)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız.png" class="draggable" draggable="true" id="img1" onclick="addImageToDropzone('img1', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız1.png" class="draggable" draggable="true" id="img12" onclick="addImageToDropzone('img12', 1)">
+
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız2.png" class="draggable" draggable="true" id="img13" onclick="addImageToDropzone('img13', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız3.png" class="draggable" draggable="true" id="img14" onclick="addImageToDropzone('img14', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız4.png" class="draggable" draggable="true" id="img15" onclick="addImageToDropzone('img15', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız5.png" class="draggable" draggable="true" id="img16" onclick="addImageToDropzone('img16', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız6.png" class="draggable" draggable="true" id="img17" onclick="addImageToDropzone('img17', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız7.png" class="draggable" draggable="true" id="img18" onclick="addImageToDropzone('img18', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız8.png" class="draggable" draggable="true" id="img19" onclick="addImageToDropzone('img19', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız9.png" class="draggable" draggable="true" id="img110" onclick="addImageToDropzone('img110', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız10.png" class="draggable" draggable="true" id="img111" onclick="addImageToDropzone('img111', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız11.png" class="draggable" draggable="true" id="img112" onclick="addImageToDropzone('img112', 1)">
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız12.png" class="draggable" draggable="true" id="img113" onclick="addImageToDropzone('img113', 1)">
+        </div>
+        
+        <div class="column" id="column2" ondrop="drop(event, 2)" ondragover="allowDrop(event)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız.png" class="draggable" draggable="true" id="img23" onclick="addImageToDropzone('img23', 2)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız1.png" class="draggable" draggable="true" id="img24" onclick="addImageToDropzone('img24', 2)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız2.png" class="draggable" draggable="true" id="img25" onclick="addImageToDropzone('img25', 2)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız3.png" class="draggable" draggable="true" id="img26" onclick="addImageToDropzone('img26', 2)">
+            
+
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız4.png" class="draggable" draggable="true" id="img27" onclick="addImageToDropzone('img27', 2)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız5.png" class="draggable" draggable="true" id="img28" onclick="addImageToDropzone('img28', 2)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız6.png" class="draggable" draggable="true" id="img29" onclick="addImageToDropzone('img29', 2)">
+            
+            <img src="https://altaykrl.com/Gardrop/Pantalon/Adsız7.png" class="draggable" draggable="true" id="img299" onclick="addImageToDropzone('img299', 2)">
+             
+            
+        </div>
+        <div class="column" id="column3" ondrop="drop(event, 3)" ondragover="allowDrop(event)">
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız.png" class="draggable" draggable="true" id="img35" onclick="addImageToDropzone('img35', 3)">
+            
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız1.png" class="draggable" draggable="true" id="img36" onclick="addImageToDropzone('img36', 3)">
+
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız2.png" class="draggable" draggable="true" id="img37" onclick="addImageToDropzone('img37', 3)">
+            
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız3.png" class="draggable" draggable="true" id="img38" onclick="addImageToDropzone('img38', 3)">          
+            
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız4.png" class="draggable" draggable="true" id="img39" onclick="addImageToDropzone('img39', 3)">
+            
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız5.png" class="draggable" draggable="true" id="img310" onclick="addImageToDropzone('img310', 3)">
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+<div id="dropzone" class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <p id="paragraph1"></p>
+            <p id="paragraph2"></p>
+            <p id="paragraph3"></p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var columnStates = {
+        column1: false,
+        column2: false,
+        column3: false
+    };
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+    function drop(event, columnNumber) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var droppedImage = document.getElementById(data).cloneNode(true);
+        var dropzone = document.getElementById('paragraph' + columnNumber);
+        var deleteButton = document.createElement('button');
+        deleteButton.innerText = 'KALDIR';
+        deleteButton.classList.add('delete-button', 'btn', 'btn-danger', 'btn-sm', 'ml-2');
+        deleteButton.onclick = function() {
+            droppedImage.remove();
+            deleteButton.remove();
+        };
+        dropzone.appendChild(droppedImage);
+        dropzone.appendChild(deleteButton);
+    }
+
+    function addImageToDropzone(imageId, columnNumber) {
+        var image = document.getElementById(imageId).cloneNode(true);
+        var dropzone = document.getElementById('paragraph' + columnNumber);
+        var deleteButton = document.createElement('button');
+        deleteButton.innerText = 'KALDIR';
+        deleteButton.classList.add('delete-button', 'btn', 'btn-danger', 'btn-sm', 'ml-2');
+        deleteButton.onclick = function() {
+            image.remove();
+            deleteButton.remove();
+        };
+        dropzone.appendChild(image);
+        dropzone.appendChild(deleteButton);
+    }
+</script>
+
+</body>
+</html>
