@@ -7,14 +7,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
     .column {
-        padding: 10px;
-        border: 1px solid #ccc;
-        display: none; 
+        padding: 15px;
+        border: 2px solid #ccc;
+        display: none;
+        overflow-x: auto;  
+        white-space: nowrap;  
     }
 
     .draggable {
-        width: 130px;
-        height: 130px;
+        width: 160px;
+        height: 180px;
         cursor: pointer;
     }
 
@@ -25,8 +27,8 @@
     }
 
     #dropzone img {
-        width: 130px;
-        height: 130px;
+        width: 150px;
+        height: 150px;
         margin-right: 1px;
         margin-bottom: 1px;
     }
@@ -38,9 +40,9 @@
     }
 
     .delete-button {
-        font-size: 9px; 
-        padding: 1px 1px;  
-        margin-left: 1px;  
+        font-size: 9px;
+        padding: 1px 1px;
+        margin-left: 1px;
         cursor: pointer;
     }
     
@@ -49,10 +51,8 @@
 <body>
 
 <script>
-
-//aynı anda sütun açılmaması için gerekli kod
-
     var openColumn = ""; 
+    var singleRowMode = true; 
 
     function closeAllColumns() {
         var columns = document.querySelectorAll('.column');
@@ -72,23 +72,48 @@
             openColumn = columnId;
         }
     }
-</script>
 
+    function toggleRowMode() {
+        singleRowMode = !singleRowMode;  
+        var columns = document.querySelectorAll('.column');
+        columns.forEach(function(column) {
+            if (singleRowMode) {
+                column.style.whiteSpace = "nowrap"; // Tek satır modu
+                column.style.overflowX = "auto";  
+            } else {
+                column.style.whiteSpace = "normal"; // Normal satır modu
+                column.style.overflowX = "visible";  
+            }
+        });
+    }
+</script>
+<div style="text-align: center;">
+    <br>
+    <button type="button" class="btn btn-dark" onclick="toggleRowMode()">Tek Satır Modu Aç/Kapat</button>
+</div>
+
+        
 <div class="container mt-4">
-    <h3>Altay's Gardrop v0.1</h3>
-    <h5>Kıyafet seçmek için butona ve kıyafete tıkla. Aşağıdaki boş alana gelecektir. Gelmiyorsa sıçtık.</h5>
+    <div style="text-align: center;">
+        <h4>Altay's Gardrop v0.1.2</h4>
+   
+        <h6 id="instruction">2024 Summer Season Dolabımdan Kıyafet seçmek için butona ve kıyafete tıkla. Aşağıdaki boş alana gelecektir. Gelmiyorsa sıçtık.</h6>
+      </div>
     <div class="row">
         <div class="col">
             <button type="button" class="btn btn-primary" onclick="toggleColumn('column1')">Tişörtler Aç/Kapat</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-primary" onclick="toggleColumn('column2')">Pantalon Aç/Kapat</button>
+            <button type="button" class="btn btn-primary" onclick="toggleColumn('column2')">Pantolon Aç/Kapat</button>
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary" onclick="toggleColumn('column3')">Ayakkabı Aç/Kapat</button>
         </div>
+        <br>
+
     </div>
 </div>
+
 
 <div id="container" class="container mt-4">
     <div class="row">
@@ -119,6 +144,12 @@
             <img src="https://altaykrl.com/Gardrop/Tisort/Adsız11.png" class="draggable" draggable="true" id="img112" onclick="addImageToDropzone('img112', 1)">
             
             <img src="https://altaykrl.com/Gardrop/Tisort/Adsız12.png" class="draggable" draggable="true" id="img113" onclick="addImageToDropzone('img113', 1)">
+            
+            
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız13.png" class="draggable" draggable="true" id="img114" onclick="addImageToDropzone('img114', 1)">
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız14.png" class="draggable" draggable="true" id="img115" onclick="addImageToDropzone('img115', 1)">
+            <img src="https://altaykrl.com/Gardrop/Tisort/Adsız15.png" class="draggable" draggable="true" id="img116" onclick="addImageToDropzone('img116', 1)">
+
         </div>
         
         <div class="column" id="column2" ondrop="drop(event, 2)" ondragover="allowDrop(event)">
@@ -155,7 +186,11 @@
             
             <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız5.png" class="draggable" draggable="true" id="img310" onclick="addImageToDropzone('img310', 3)">
             
+            <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız6.png" class="draggable" draggable="true" id="img320" onclick="addImageToDropzone('img320', 3)">
             
+                        <img src="https://altaykrl.com/Gardrop/Ayakkabı/Adsız7.png" class="draggable" draggable="true" id="img330" onclick="addImageToDropzone('img330', 3)">
+
+
             
         </div>
     </div>
